@@ -3,19 +3,22 @@ const {
   inklecate,
 } = require('inklecate');
 
-module.exports = function InkWebpackLoader(source) {
+module.exports = function InkWebpackLoader(content, map, meta) {
   const callback = this.async();
   this.addDependency(getCacheFilepath());
   inklecate([ this.resourcePath ]).then(
     function resolved(data) {
       callback(
+        null,
         `export const storyContent = ${JSON.stringify(data.storyContent)};\n` +
           `export const text = ${JSON.stringify(source.trim())};\n` +
           `export const compilerOutput = ` +
-            `${JSON.stringify(data.compilerOutput)};\n`
+            `${JSON.stringify(data.compilerOutput)};\n`,
+        map,
+        meta,
       );
     },
 
-    function rejected(err) { throw err; },
+    function rejected(err) { return callback(err); },
   );
 };
