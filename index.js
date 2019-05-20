@@ -11,7 +11,7 @@ module.exports = function InkWebpackLoader(content, map, meta) {
       callback(
         null,
         `export const storyContent = ${JSON.stringify(data.storyContent)};\n` +
-          `export const text = ${JSON.stringify(source.trim())};\n` +
+          `export const text = ${JSON.stringify(content.trim())};\n` +
           `export const compilerOutput = ` +
             `${JSON.stringify(data.compilerOutput)};\n`,
         map,
