@@ -1,7 +1,7 @@
 {
-  "name": "ink-webpack-loader",
-  "version": "1.0.0",
-  "description": "A webpack loader to convert Ink source files into JavaScript source.",
+  "name": "inklecate-loader",
+  "version": "1.0.1",
+  "description": "A webpack loader to convert .ink files into compiled story JSON, using the official inklecate binaries.",
   "main": "index.js",
   "scripts": {
     "test": "jest"
@@ -24,5 +24,8 @@
   "bugs": {
     "url": "https://github.com/furkleindustries/ink-webpack-loader/issues"
   },
-  "homepage": "https://github.com/furkleindustries/ink-webpack-loader#readme"
+  "homepage": "https://github.com/furkleindustries/ink-webpack-loader#readme",
+  "dependencies": {
+    "inklecate": "^1.1.0"
+  }
 }
