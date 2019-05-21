@@ -6,7 +6,7 @@ const {
 module.exports = function InkWebpackLoader(content, map, meta) {
   const callback = this.async();
   this.addDependency(getCacheFilepath());
-  inklecate([ this.resourcePath ]).then(
+  inklecate({ inputFilepath: this.resourcePath }).then(
     function resolved(data) {
       callback(
         null,
