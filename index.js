@@ -1,19 +1,18 @@
 const {
-  getCacheFilepath,
   inklecate,
 } = require('inklecate');
 
 module.exports = function InkWebpackLoader(content, map, meta) {
   const callback = this.async();
-  this.addDependency(getCacheFilepath(this.resourcePath));
   inklecate({ inputFilepath: this.resourcePath }).then(
-    function resolved(data) {
+    function resolved([ data ]) {
       callback(
         null,
         `export const storyContent = ${JSON.stringify(data.storyContent)};\n` +
           `export const text = ${JSON.stringify(content.trim())};\n` +
-          `export const compilerOutput = ` +
-            `${JSON.stringify(data.compilerOutput)};\n`,
+          `export const compilerOutput = ${
+            JSON.stringify(data.compilerOutput)
+          };\n`,
         map,
         meta,
       );
