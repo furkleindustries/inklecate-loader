@@ -5,7 +5,7 @@ const {
 module.exports = function InkWebpackLoader(content, map, meta) {
   const callback = this.async();
   inklecate({ inputFilepath: this.resourcePath }).then(
-    function resolved([ data ]) {
+    function resolved(data) {
       callback(
         null,
         `export const storyContent = ${JSON.stringify(data.storyContent)};\n` +
