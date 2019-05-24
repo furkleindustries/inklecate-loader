@@ -18,6 +18,8 @@ module.exports = function InkWebpackLoader(content, map, meta) {
       );
     },
 
-    function rejected(err) { return callback(err); },
+    function rejected(err) {
+      return callback(typeof err === Error ? err : new Error(err));
+    },
   );
 };
