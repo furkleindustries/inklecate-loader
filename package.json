@@ -1,6 +1,6 @@
 {
   "name": "inklecate-loader",
-  "version": "1.0.19",
+  "version": "1.0.20",
   "description": "A webpack loader to convert .ink files into compiled story JSON, using the official inklecate binaries.",
   "main": "index.js",
   "scripts": {
