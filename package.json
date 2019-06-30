@@ -26,6 +26,6 @@
   },
   "homepage": "https://github.com/furkleindustries/ink-webpack-loader#readme",
   "dependencies": {
-    "inklecate": "^1.2.4"
+    "inklecate": "^1.2.10"
   }
 }
