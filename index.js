@@ -30,10 +30,10 @@ module.exports = function InkWebpackLoader(content, map, meta) {
       try {
         require('inklecate-wasm').initializeMonoEnvironment().then((compile) => {
           const storyContent = compile(content);
-          return {
+          return resolve({
             storyContent,
             compilerOutput: '',
-          }
+          });
         });
       } catch (err) {
         return reject(err);
