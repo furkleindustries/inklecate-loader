@@ -1,10 +1,45 @@
 const {
-  inklecate,
-} = require('inklecate');
+  readFile,
+} = require('fs-extra');
+const {
+  getOptions,
+} = require('loader-utils');
+const validateOptions = require('schema-utils');
+
+const schema = {
+  type: 'object',
+  properties: {
+    wasm: {
+      type: 'boolean'
+    },
+  }
+};
 
 module.exports = function InkWebpackLoader(content, map, meta) {
+  const options = getOptions(this);
+
+  validateOptions(schema, options, 'Example Loader');
+
   const callback = this.async();
-  inklecate({ inputFilepath: this.resourcePath }).then(
+
+  let prom;
+  if (options.wasm === false) {
+    prom = require('inklecate').inklecate({ inputFilepath: this.resourcePath });  
+  } else {
+    prom = new Promise(async (resolve, reject) => {
+      try {
+        readFile(this.resourcePath).then((buffer) => {
+          require('inklecate-wasm').initializeMonoEnvironment((compile) => (
+            resolve(compile(buffer))
+          ));
+        });
+      } catch (err) {
+        return reject(err);
+      }
+    });
+  }
+
+  prom.then(
     function resolved(data) {
       callback(
         null,
