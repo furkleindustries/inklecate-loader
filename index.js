@@ -16,7 +16,7 @@ const schema = {
 };
 
 module.exports = function InkWebpackLoader(content, map, meta) {
-  const options = getOptions(this);
+  const options = getOptions(this) || {};
 
   validateOptions(schema, options, 'Example Loader');
 
