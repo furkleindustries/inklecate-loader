@@ -29,7 +29,7 @@ module.exports = function InkWebpackLoader(content, map, meta) {
     prom = new Promise(async (resolve, reject) => {
       try {
         readFile(this.resourcePath).then((buffer) => {
-          require('inklecate-wasm').initializeMonoEnvironment((compile) => (
+          require('inklecate-wasm').initializeMonoEnvironment().then((compile) => (
             resolve(compile(buffer))
           ));
         });
