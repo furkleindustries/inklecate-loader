@@ -28,10 +28,12 @@ module.exports = function InkWebpackLoader(content, map, meta) {
   } else {
     prom = new Promise(async (resolve, reject) => {
       try {
-        readFile(this.resourcePath).then((buffer) => {
-          require('inklecate-wasm').initializeMonoEnvironment().then((compile) => (
-            resolve(compile(buffer))
-          ));
+        require('inklecate-wasm').initializeMonoEnvironment().then((compile) => {
+          const storyContent = compile(content);
+          return {
+            storyContent,
+            compilerOutput: '',
+          }
         });
       } catch (err) {
         return reject(err);
