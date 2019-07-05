@@ -29,11 +29,8 @@ module.exports = function InkWebpackLoader(content, map, meta) {
     prom = new Promise(async (resolve, reject) => {
       try {
         require('inklecate-wasm').initializeMonoEnvironment().then((compile) => {
-          const storyContent = compile(content);
-          return resolve({
-            storyContent,
-            compilerOutput: '',
-          });
+          const compiled = compile(content);
+          return resolve(compiled);
         });
       } catch (err) {
         return reject(err);

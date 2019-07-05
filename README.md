@@ -15,9 +15,9 @@ A tiny loader for webpack which asynchronously calls the [inklecate](/inklecate)
   test: /\.ink$/,
   use: require.resolve('inklecate-loader'),
   options: {
-    /* Defaults to true, set to false to use the inklecate binaries. */
-    wasm: false,
-  }
+    /* Optional, defaults to true. false calls the inklecate binaries. */
+    wasm: true,
+  },
 }
 ```
 
