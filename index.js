@@ -46,7 +46,7 @@ module.exports = function InkWebpackLoader(content, map, meta) {
           compilerOutput: data.compilerOutput,
           storyContent: data.storyContent,
           text: content.trim(),
-        }, null, 2)};\n`,
+        })};\n`,
         map,
         meta,
       );
