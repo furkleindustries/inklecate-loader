@@ -42,11 +42,11 @@ module.exports = function InkWebpackLoader(content, map, meta) {
     function resolved(data) {
       callback(
         null,
-        `export const storyContent = ${JSON.stringify(data.storyContent)};\n` +
-          `export const text = ${JSON.stringify(content.trim())};\n` +
-          `export const compilerOutput = ${
-            JSON.stringify(data.compilerOutput)
-          };\n`,
+        `module.exports = ${JSON.stringify({
+          compilerOutput: data.compilerOutput,
+          storyContent: data.storyContent,
+          text: content.trim(),
+        }, null, 2)};\n`,
         map,
         meta,
       );
