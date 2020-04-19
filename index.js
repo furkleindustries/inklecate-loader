@@ -26,7 +26,7 @@ module.exports = function InkWebpackLoader(content, map, meta) {
 
   const inklecateOpts = {
     countAllVisits: Boolean(options.countAllVisits),
-    inputFilepath: Boolean(this.resourcePath),
+    inputFilepath: this.resourcePath,
     wasm: Boolean(options.wasm),
   };
 
