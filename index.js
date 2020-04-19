@@ -23,7 +23,6 @@ module.exports = function InkWebpackLoader(content, map, meta) {
   validateOptions(schema, options, 'Example Loader');
 
   const callback = this.async();
-  const options = getOptions(this);
 
   const inklecateOpts = {
     countAllVisits: Boolean(options.countAllVisits),
