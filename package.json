@@ -1,6 +1,6 @@
 {
   "name": "inklecate-loader",
-  "version": "1.0.20",
+  "version": "1.1.0",
   "description": "A webpack loader to convert .ink files into compiled story JSON, using the official inklecate binaries.",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/furkleindustries/ink-webpack-loader.git"
+    "url": "git+https://github.com/furkleindustries/inklecate-loader.git"
   },
   "keywords": [
     "inklecate",
@@ -22,10 +22,14 @@
   "author": "furkle",
   "license": "GPL-3.0",
   "bugs": {
-    "url": "https://github.com/furkleindustries/ink-webpack-loader/issues"
+    "url": "https://github.com/furkleindustries/inklecate-loader/issues"
   },
-  "homepage": "https://github.com/furkleindustries/ink-webpack-loader#readme",
+  "homepage": "https://github.com/furkleindustries/inklecate-loader#readme",
   "dependencies": {
-    "inklecate": "^1.2.11"
+    "inklecate": "^1.4.0"
+  },
+  "devDependencies": {
+    "bufferutil": "^4.0.1",
+    "utf-8-validate": "^5.0.2"
   }
 }

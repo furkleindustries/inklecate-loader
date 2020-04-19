@@ -4,7 +4,13 @@ const {
 
 module.exports = function InkWebpackLoader(content, map, meta) {
   const callback = this.async();
-  inklecate({ inputFilepath: this.resourcePath }).then(
+  const options = this.getOptions();
+
+  inklecate({
+    countAllVisits: options.countAllVisits,
+    inputFilepath: this.resourcePath,
+    wasm: Boolean(options.wasm),
+  }).then(
     function resolved(data) {
       callback(
         null,
