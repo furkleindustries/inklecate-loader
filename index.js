@@ -1,24 +1,45 @@
+const inklecate = require('inklecate');
 const {
-  inklecate,
-} = require('inklecate');
+  getOptions,
+} = require('loader-utils');
+const validateOptions = require('schema-utils');
+
+const schema = {
+  type: 'object',
+  properties: {
+    countAllVisits: {
+      type: 'boolean',
+    },
+
+    wasm: {
+      type: 'boolean',
+    },
+  }
+};
 
 module.exports = function InkWebpackLoader(content, map, meta) {
-  const callback = this.async();
-  const options = this.getOptions();
+  const options = getOptions(this) || {};
 
-  inklecate({
-    countAllVisits: options.countAllVisits,
-    inputFilepath: this.resourcePath,
+  validateOptions(schema, options, 'Example Loader');
+
+  const callback = this.async();
+  const options = getOptions(this);
+
+  const inklecateOpts = {
+    countAllVisits: Boolean(options.countAllVisits),
+    inputFilepath: Boolean(this.resourcePath),
     wasm: Boolean(options.wasm),
-  }).then(
+  };
+
+  inklecate(inklecateOpts).then(
     function resolved(data) {
       callback(
         null,
-        `export const storyContent = ${JSON.stringify(data.storyContent)};\n` +
-          `export const text = ${JSON.stringify(content.trim())};\n` +
-          `export const compilerOutput = ${
-            JSON.stringify(data.compilerOutput)
-          };\n`,
+        `module.exports = ${JSON.stringify({
+          compilerOutput: data.compilerOutput,
+          storyContent: data.storyContent,
+          text: content.trim(),
+        })};\n`,
         map,
         meta,
       );
