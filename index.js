@@ -1,4 +1,4 @@
-const inklecate = require('inklecate');
+const { inklecate } = require('inklecate');
 const {
   getOptions,
 } = require('loader-utils');
