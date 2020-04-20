@@ -25,10 +25,11 @@
     "url": "https://github.com/furkleindustries/inklecate-loader/issues"
   },
   "homepage": "https://github.com/furkleindustries/inklecate-loader#readme",
-  "dependencies": {},
+  "dependencies": {
+    "inklecate": "^1.5.2"
+  },
   "devDependencies": {
     "bufferutil": "^4.0.1",
-    "inklecate": "^1.5.2",
     "utf-8-validate": "^5.0.2"
   }
 }
