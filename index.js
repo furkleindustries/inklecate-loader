@@ -11,7 +11,15 @@ const schema = {
       type: 'boolean',
     },
 
-    wasm: {
+    inputFilepath: {
+      type: 'string',
+    },
+
+    verbose: {
+      type: 'boolean',
+    },
+
+    DEBUG: {
       type: 'boolean',
     },
   }
@@ -27,7 +35,8 @@ module.exports = function InkWebpackLoader(content, map, meta) {
   const inklecateOpts = {
     countAllVisits: Boolean(options.countAllVisits),
     inputFilepath: this.resourcePath,
-    wasm: Boolean(options.wasm),
+    verbose: Boolean(options.verbose),
+    DEBUG: Boolean(options.DEBUG),
   };
 
   inklecate(inklecateOpts).then(
