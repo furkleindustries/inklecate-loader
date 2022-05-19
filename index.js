@@ -1,8 +1,6 @@
 const { inklecate } = require('inklecate');
-const {
-  getOptions,
-} = require('loader-utils');
-const validateOptions = require('schema-utils');
+const { getOptions } = require('loader-utils');
+const { validate } = require('schema-utils');
 
 const schema = {
   type: 'object',
@@ -22,13 +20,13 @@ const schema = {
     DEBUG: {
       type: 'boolean',
     },
-  }
+  },
 };
 
 module.exports = function InkWebpackLoader(content, map, meta) {
   const options = getOptions(this) || {};
 
-  validateOptions(schema, options, 'Example Loader');
+  validate(schema, options, 'InklecateLoader');
 
   const callback = this.async();
 
@@ -49,12 +47,12 @@ module.exports = function InkWebpackLoader(content, map, meta) {
           text: content.trim(),
         })};\n`,
         map,
-        meta,
+        meta
       );
     },
 
     function rejected(err) {
       return callback(typeof err === Error ? err : new Error(err));
-    },
+    }
   );
 };
