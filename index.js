@@ -1,60 +1,58 @@
 const { inklecate } = require('inklecate');
-const {
-  getOptions,
-} = require('loader-utils');
-const validateOptions = require('schema-utils');
+const { getOptions } = require('loader-utils');
+const { validate } = require('schema-utils');
 
 const schema = {
-  type: 'object',
-  properties: {
-    countAllVisits: {
-      type: 'boolean',
-    },
+	type: 'object',
+	properties: {
+		countAllVisits: {
+			type: 'boolean',
+		},
 
-    inputFilepath: {
-      type: 'string',
-    },
+		inputFilepath: {
+			type: 'string',
+		},
 
-    verbose: {
-      type: 'boolean',
-    },
+		verbose: {
+			type: 'boolean',
+		},
 
-    DEBUG: {
-      type: 'boolean',
-    },
-  }
+		DEBUG: {
+			type: 'boolean',
+		},
+	},
 };
 
 module.exports = function InkWebpackLoader(content, map, meta) {
-  const options = getOptions(this) || {};
+	const options = getOptions(this) || {};
 
-  validateOptions(schema, options, 'Example Loader');
+	validate(schema, options, 'InklecateLoader');
 
-  const callback = this.async();
+	const callback = this.async();
 
-  const inklecateOpts = {
-    countAllVisits: Boolean(options.countAllVisits),
-    inputFilepath: this.resourcePath,
-    verbose: Boolean(options.verbose),
-    DEBUG: Boolean(options.DEBUG),
-  };
+	const inklecateOpts = {
+		countAllVisits: Boolean(options.countAllVisits),
+		inputFilepath: this.resourcePath,
+		verbose: Boolean(options.verbose),
+		DEBUG: Boolean(options.DEBUG),
+	};
 
-  inklecate(inklecateOpts).then(
-    function resolved(data) {
-      callback(
-        null,
-        `module.exports = ${JSON.stringify({
-          compilerOutput: data.compilerOutput,
-          storyContent: data.storyContent,
-          text: content.trim(),
-        })};\n`,
-        map,
-        meta,
-      );
-    },
+	inklecate(inklecateOpts).then(
+		function resolved(data) {
+			callback(
+				null,
+				`module.exports = ${JSON.stringify({
+					compilerOutput: data.compilerOutput,
+					storyContent: data.storyContent,
+					text: content.trim(),
+				})};\n`,
+				map,
+				meta
+			);
+		},
 
-    function rejected(err) {
-      return callback(typeof err === Error ? err : new Error(err));
-    },
-  );
+		function rejected(err) {
+			return callback(typeof err === Error ? err : new Error(err));
+		}
+	);
 };

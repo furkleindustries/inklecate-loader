@@ -1,35 +1,38 @@
 {
-  "name": "inklecate-loader",
-  "version": "1.7.2",
-  "description": "A webpack loader to convert .ink files into compiled story JSON, using the official inklecate binaries.",
-  "main": "index.js",
-  "scripts": {
-    "test": "jest"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/furkleindustries/inklecate-loader.git"
-  },
-  "keywords": [
-    "inklecate",
-    "webpack",
-    "loader",
-    "ink",
-    "inkle",
-    "IF",
-    "hypertext"
-  ],
-  "author": "furkle",
-  "license": "GPL-3.0",
-  "bugs": {
-    "url": "https://github.com/furkleindustries/inklecate-loader/issues"
-  },
-  "homepage": "https://github.com/furkleindustries/inklecate-loader#readme",
-  "dependencies": {
-    "inklecate": "^1.7.1"
-  },
-  "devDependencies": {
-    "bufferutil": "^4.0.1",
-    "utf-8-validate": "^5.0.2"
-  }
+	"name": "inklecate-loader",
+	"version": "1.7.2",
+	"description": "A webpack loader to convert .ink files into compiled story JSON, using the official inklecate binaries.",
+	"main": "index.js",
+	"scripts": {
+		"test": "jest"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/furkleindustries/inklecate-loader.git"
+	},
+	"keywords": [
+		"inklecate",
+		"webpack",
+		"loader",
+		"ink",
+		"inkle",
+		"IF",
+		"hypertext"
+	],
+	"author": "furkle",
+	"license": "GPL-3.0",
+	"bugs": {
+		"url": "https://github.com/furkleindustries/inklecate-loader/issues"
+	},
+	"homepage": "https://github.com/furkleindustries/inklecate-loader#readme",
+	"dependencies": {
+		"inklecate": "^1.8.1"
+	},
+	"devDependencies": {
+		"bufferutil": "^4.0.6",
+		"utf-8-validate": "^5.0.9"
+	},
+	"peerDependencies": {
+		"schema-utils": "^4.0.0"
+	}
 }
